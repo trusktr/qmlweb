@@ -41,7 +41,6 @@ QMLEngine = function (element, options) {
     // Base path of qml engine (used for resource loading)
     this.$basePath = "";
 
-
 //----------Public Methods----------
     // Start the engine
     this.start = function()
