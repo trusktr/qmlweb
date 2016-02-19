@@ -13,8 +13,8 @@ global.Qt = {
   // Load file, parse and construct as Component (.qml)
   //FIXME: remove the parameter executionContext and get it autonomously.
   createComponent: function(name, executionContext) {
-    if (name in engine.components)
-        return engine.components[name];
+    if (name in constructors)
+        return new constructors[name]({ object: [], context: executionContext });
 
     var nameIsUrl = name.indexOf("//") >= 0 || name.indexOf(":/") >= 0; // e.g. // in protocol, or :/ in disk urls (D:/)
 
