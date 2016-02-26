@@ -121,8 +121,13 @@ registerQmlType({
     createSimpleProperty("Component", this, "targetState");
     createSimpleProperty("int", this, "timeout");
 
+    function trigger() {
+      if (meta.parent.active)
+        self.triggered();
+    }
+
     meta.parent.entered.connect(function() {
-      setTimeout(this.finished, self.timeout);
+      setTimeout(trigger, self.timeout);
     });
   }
 });
