@@ -1372,7 +1372,7 @@ function qmlparse($TEXT, exigent_mode, embed_tokens) {
                 var name = stat[1];
                 return as("qmlmethod", name, stat,
                     S.text.substr(from, to - from));
-            } else if (is("name", "signal")) {
+            } else if (is("name", "signal") && (peek().type != "punc")) {
                 return qmlsignaldef();
             } else if (S.token.type == "name") {
                 var propname = S.token.value;
