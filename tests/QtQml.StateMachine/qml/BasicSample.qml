@@ -6,17 +6,25 @@ Rectangle {
   property int triggerVariable: 42
   property bool blocked: true
 
+  signal signalTrigger()
+
   function enterFinalState() {
     finalState.entered();
   }
 
   StateMachine {
     id: stateMachine
-    initialState: state
+    initialState: firstState
     running: true
 
     State {
-      id: state
+      id: firstState
+
+      SignalTransition {
+        targetState: finalState
+        signal: main.signalTrigger
+        guard: main.blocked
+      }
     }
 
     FinalState {
